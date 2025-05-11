@@ -1,9 +1,9 @@
-import numpy as np
-import pandas as pd
-import yfinance as yf
-from keras.models import load_model
-import streamlit as st
-import matplotlib.pyplot as plt
+import numpy as np # type: ignore
+import pandas as pd # type: ignore
+import yfinance as yf  # type: ignore
+from keras.models import load_model  # type: ignore
+import streamlit as st  # type: ignore
+import matplotlib.pyplot as plt  # type: ignore
 
 model = load_model("Stock Predictions Model.keras")
 
@@ -21,7 +21,7 @@ st.write(data)
 data_train = pd.DataFrame(data.Close[0: int(len(data)*0.80)])
 data_test = pd.DataFrame(data.Close[int(len(data)*0.80): len(data)])
 
-from sklearn.preprocessing import MinMaxScaler
+from sklearn.preprocessing import MinMaxScaler  # type: ignore
 scaler = MinMaxScaler(feature_range=(0,1))
 
 pas_100_days = data_train.tail(100)
