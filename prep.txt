@@ -1,0 +1,75 @@
+Stock Market Price Predictor - Complete Interview Guide
+Overview:
+This project is a Streamlit web app that predicts stock prices using a deep learning model built with LSTM
+(Long Short-Term Memory) neural networks. It uses historical stock data (2012-2022) fetched via the
+yfinance API. The app visualizes price trends using moving averages, shows prediction accuracy, and
+forecasts future prices.
+------------------------------------------------------------
+Tech Stack:
+- Language: Python
+- Frameworks/Libraries: TensorFlow, Keras, scikit-learn, Streamlit, matplotlib, yfinance, pandas, numpy
+------------------------------------------------------------
+Model Details:
+- Model type: Stacked LSTM (4 layers)
+- Layers: [50, 60, 80, 120 units] with dropout between layers
+- Final layer: Dense(1) for price output
+- Loss function: Mean Squared Error (MSE)
+- Optimizer: Adam (default)
+- Input shape: 100 timesteps, 1 feature
+- Training duration: 50 epochs
+------------------------------------------------------------
+Data Preparation:
+- Source: yfinance API
+- Columns: Date, Open, High, Low, Close, Adj Close, Volume
+- Feature used: 'Close' only (univariate time series)
+- Normalization: MinMaxScaler (range 0-1)
+- Sequence window: 100 days
+- Train/Test split: 80% training, 20% testing
+- Recursive prediction used for forecasting next 30 days
+------------------------------------------------------------
+App Functionality:
+- Input: Stock ticker (e.g., AAPL, TSLA)
+- Output:
+ - Raw historical stock data
+ - Moving averages (MA50, MA100, MA200)
+ - Actual vs Predicted graph
+ - Future price forecast for 30 days (with plot & table)
+------------------------------------------------------------
+Common Interview Questions & Answers:
+Q1. Why LSTM for stock prediction?
+A1. LSTM networks are ideal for time series because they maintain memory of past inputs via internal states.
+Stock prices are sequential and exhibit temporal dependencies, making LSTM suitable.
+Q2. Why use only the -Close- column?
+A2. Close price is widely used in stock forecasting and reflects the final agreed value for the day. For
+simplicity and to reduce input dimensionality, only 'Close' was used.
+Q3. What are MA50, MA100, MA200?
+A3. Moving Averages over 50, 100, and 200 days. They smooth out short-term fluctuations and help reveal
+long-term trends.
+Q4. How is the model evaluated?
+A4. By comparing predicted values with actual prices on the test set using visual graphs.
+Q5. How are future prices predicted?
+A5. Using recursive forecasting: the model predicts the next day using the last 100 days, then uses that
+predicted day to forecast the next, repeated for 30 days.
+Q6. Can this be used for trading?
+A6. No. It-s an educational model. Trading systems require multi-variate inputs, risk control, external
+indicators, and real-time data.
+Q7. What are potential enhancements?
+- Include features like Volume, Open, High, Low.
+- Try GRUs or Transformer models.
+- Add confidence intervals.
+- Support live data streaming.
+- Implement backtesting modules.
+Q8. Challenges faced?
+A8. Data scaling, managing sequence windows, balancing model complexity, and integrating Streamlit
+visualization.
+Q9. What is the model's input/output shape?
+A9. Input: (batch, 100, 1), Output: (batch, 1)
+Q10. How does the MinMaxScaler affect prediction?
+A10. It ensures all input values are between 0 and 1, which helps the LSTM model converge faster. The
+inverse transform is applied to predictions for interpretation.
+------------------------------------------------------------
+Additional Notes:
+- Stock data is fetched dynamically from Yahoo Finance using `yfinance`
+- Model is pre-trained and loaded using `load_model()` from Keras
+- App uses Matplotlib for graphs and Streamlit widgets for UI
+Author: Dea Mishra
