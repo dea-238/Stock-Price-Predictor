@@ -43,7 +43,7 @@ cd stock-market-predictor
 
 ### 2. Set up a virtual environment
 py -3.11 -m venv .venv
-.venv\Scripts\activate   # On Windows
+.venv\Scripts\activate.ps1   # On Windows
 source .venv/bin/activate  # On Linux/Mac
 
 
