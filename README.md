@@ -57,7 +57,7 @@ streamlit run app.py
 
 ## 🧠 Training Details
 
-* Trained on 10 years of data (2012–2022)
+* Trained on 10 years of data (2015–2025)
 * 4 LSTM layers with increasing neurons (50 → 120)
 * Dropout applied to reduce overfitting
 * Loss function: Mean Squared Error (MSE)
