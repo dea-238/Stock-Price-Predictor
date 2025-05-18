@@ -42,7 +42,7 @@ git clone https://github.com/your-username/stock-market-predictor.git
 cd stock-market-predictor
 
 ### 2. Set up a virtual environment
-python -m venv .venv
+py -3.11 -m venv .venv
 .venv\Scripts\activate   # On Windows
 source .venv/bin/activate  # On Linux/Mac
 
