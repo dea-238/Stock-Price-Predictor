@@ -31,7 +31,7 @@ data_test_scale = scaler.fit_transform(data_test)
 st.subheader('Price vs MA50')
 
 ma_50_days = data.Close.rolling(50).mean()
-fig1 = plt.figure(figsize=(8,6))
+fig1 = plt.figure(figsize=(6,4))
 
 plt.plot(ma_50_days, 'r', label='MA50')
 plt.plot(data.Close, 'g', label='Closing Price')
@@ -47,7 +47,7 @@ st.pyplot(fig1)
 st.subheader('Price vs MA50 vs MA100')
 
 ma_100_days = data.Close.rolling(100).mean()
-fig2 = plt.figure(figsize=(8,6))
+fig2 = plt.figure(figsize=(6,4))
 
 plt.plot(ma_50_days, 'r', label='MA50')
 plt.plot(ma_100_days, 'b', label='MA100')
@@ -63,7 +63,7 @@ st.pyplot(fig2)
 st.subheader('Price vs MA100 vs MA200')
 
 ma_200_days = data.Close.rolling(200).mean()
-fig3 = plt.figure(figsize=(8,6))
+fig3 = plt.figure(figsize=(6,4))
 
 plt.plot(ma_100_days, 'r', label='MA100')
 plt.plot(ma_200_days, 'b', label='MA200')
@@ -93,7 +93,7 @@ predict = predict * scale
 y = y * scale
 
 st.subheader('Original Price vs Predicted Price')
-fig4 = plt.figure(figsize=(8,6))
+fig4 = plt.figure(figsize=(6,4))
 plt.plot(predict, 'r', label='Original Price')
 plt.plot(y, 'g', label = 'Predicted Price')
 plt.xlabel('Time')
@@ -133,7 +133,7 @@ future_df = pd.DataFrame({
 })
 st.dataframe(future_df)
 
-fig5 = plt.figure(figsize=(8,6))
+fig5 = plt.figure(figsize=(6,4))
 plt.plot(future_dates, future_pred_actual, color='blue', label='Forecasted Price')
 plt.title('Next 30 Days Forecast')
 plt.xlabel('Date')
